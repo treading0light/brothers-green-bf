@@ -11,5 +11,10 @@ export default defineNuxtConfig({
 			        autoImports: ['defineStore',]
 			    },
 		    ],
+		    '@nuxtjs/tailwindcss'
 		],
+
+	plugins: [
+		'~/plugins/api.js'
+	]
 })

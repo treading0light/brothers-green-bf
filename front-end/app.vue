@@ -1,13 +1,27 @@
 <template>
-  <div>
-    <h1>Hello?</h1>
-    <p>{{ message.data }}</p>
+  <div id="root" :data-theme="theme">
+    <TheHeader @themeSelected="changeTheme" />
 
-    <p>{{ list }}</p>
+    <Background v-if="home == true" />
+
+    <NuxtPage @isHome="markHome" />
+
+    <TheFooter />
   </div>
 </template>
 
 <script setup>
+  const theme = ref('night')
+  const home = ref(false)
+
+  const changeTheme = (newTheme) => {
+    theme.value = newTheme
+    // console.log('chosen theme: ' + newTheme)
+    } 
+
+  const markHome = (bool) => home.value = bool
+
+  // Test code stays until implemented in other pages!!!
   import { useAuthStore } from '@/store/auth'
 
   const config = useRuntimeConfig()
